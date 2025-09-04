@@ -1,7 +1,8 @@
-# Игнорирование служебных файлов ОС 
-.DS_Store 
-Thumbs.db 
+# Игнорирование служебных файлов ОС
+.DS_Store
+Thumbs.db
 
-# Игнорирование логов и зависимостей 
-npm-debug.log* 
-node_modules/ 
+# Игнорирование логов и зависимостей
+npm-debug.log*
+node_modules/
+
