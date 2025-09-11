@@ -1,0 +1,83 @@
+/* БАЗА: читаемость и предсказуемость размеров */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; line-height: 1.5; padding: 1rem; }
+
+/* Стили для кнопки вызова модалки */
+#openDialog {
+    background: #0a84ff;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 1rem 0;
+}
+
+/* Формы: размеры, отступы, визуальный порядок */
+label { display: block; margin: 0.5rem 0 0.25rem; font-weight: bold; }
+input, select, textarea, button:not(#openDialog) {
+    width: 100%;
+    max-width: 480px;
+    padding: .5rem .75rem;
+    border: 1px solid #c8c8c8;
+    border-radius: 8px;
+    background: #fff;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Кнопка по умолчанию */
+button:not(#openDialog), [type="submit"] {
+    background: #0a84ff;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    max-width: none;
+    width: auto;
+}
+
+/* Состояния: клавиатура/мышь/ошибки */
+:where(input, select, textarea, button):focus-visible {
+    outline: 2px solid #0a84ff;
+    outline-offset: 2px;
+}
+button:hover { filter: brightness(0.95); }
+:disabled, [aria-disabled="true"] { opacity: .6; cursor: not-allowed; }
+
+/* Подсветка ошибочных полей */
+[aria-invalid="true"] {
+    border-color: #b00020;
+    background-color: #ffe6e6;
+}
+
+/* Стили для модального окна */
+dialog {
+    padding: 1.25rem;
+    border: none !important;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
+}
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+}
+.form-actions {
+    display: flex;
+    gap: .5rem;
+    margin-top: 1rem;
+    justify-content: flex-end;
+}
+small {
+    display: block;
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: -0.25rem;
+    margin-bottom: 0.5rem;
+}
