@@ -8,24 +8,24 @@
     <!-- ВАЖНО: Напиши свое описание -->
     <meta name="description" content="описание сайта">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <!-- Шапка сайта -->
-    <header>
-        <a href="/">Логотип или название сайта</a>
-        <!-- Главное меню навигации -->
-        <nav>
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="about.html">О нас</a></li>
-                <li><a href="contacts.html">Контакты</a></li>
+    <header class="site-header">
+        <a href="/" class="site-header__brand">Мой Сайт</a>
+        <nav class="site-nav" aria-label="Основная навигация">
+            <ul class="site-nav__list">
+                <li><a href="index.html" class="site-nav__link">Главная</a></li>
+                <li><a href="about.html" class="site-nav__link">О нас</a></li>
+                <li><a href="contacts.html" class="site-nav__link">Контакты</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Уникальное основное содержимое страницы -->
-    <main>
+    <main class="container">
         <h1>Добро пожаловать на наш сайт!</h1>
 
         <!-- Секция 1 с якорем -->
@@ -49,6 +49,12 @@
             <!-- Обычная ссылка на отдельную страницу контактов -->
             <a href="contacts.html">Подробнее</a>
         </section>
+        
+        <section class="section">
+            <h2 class="section__title">Наши работы</h2>
+            <img src="assets/project.jpg" alt="Пример нашего проекта" width="800" height="450" loading="lazy">
+        </section>
+        
     </main>
 
     <!-- Подвал сайта -->

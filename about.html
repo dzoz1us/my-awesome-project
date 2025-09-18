@@ -6,25 +6,37 @@
     <title>О нас - Название вашего сайта</title>
     <meta name="description" content="Узнайте больше о нашей компании и истории">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <a href="/">Логотип или название сайта</a>
-        <nav>
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="about.html">О нас</a></li>
-                <li><a href="contacts.html">Контакты</a></li>
+    <header class="site-header">
+        <a href="/" class="site-header__brand">Мой Сайт</a>
+        <nav class="site-nav" aria-label="Основная навигация">
+            <ul class="site-nav__list">
+                <li><a href="index.html" class="site-nav__link">Главная</a></li>
+                <li><a href="about.html" class="site-nav__link">О нас</a></li>
+                <li><a href="contacts.html" class="site-nav__link">Контакты</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <!-- Простые "хлебные крошки" -->
-        <nav aria-label="Хлебные крошки">
-            <a href="index.html">Главная</a> -
-            <span>О нас</span> <!-- Текущая страница - не ссылка -->
+    <main class="container">
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
+            <ul class="breadcrumbs__list">
+                <li><a href="index.html" class="breadcrumbs__link">Главная</a></li>
+                <li class="breadcrumbs__current">О нас</li>
+            </ul>
         </nav>
+
+        <section class="section">
+            <h2 class="section__title">Наше видео</h2>
+            <div class="media-container">
+                <video controls width="800" height="450" poster="assets/video-poster.jpg">
+                    <source src="assets/video1.mp4" type="video1/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+            </div>
+        </section>
 
         <h1>О нашей компании</h1>
         <section>
