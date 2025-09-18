@@ -1,83 +1,238 @@
-/* БАЗА: читаемость и предсказуемость размеров */
+/* ===== CSS Переменные (Дизайн-токены) ===== */
+:root {
+  /* Цвета */
+  --color-bg: #fff;
+  --color-fg: #0b0b0b;
+  --color-muted: #666;
+  --color-primary: #0a84ff;
+  --color-danger: #b00020;
+  --color-success: #00a650;
+
+  /* Типографика */
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  
+  /* Отступы */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px;
+
+  /* Скругления и тени */
+  --radius: 12px;
+  --shadow: 0 1px 2px rgba(0,0,0,.08), 0 8px 24px rgba(0,0,0,.08);
+}
+
+/* ===== Базовые стили ===== */
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
-body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; line-height: 1.5; padding: 1rem; }
-
-/* Стили для кнопки вызова модалки */
-#openDialog {
-    background: #0a84ff;
-    color: #fff;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-    margin: 1rem 0;
+body { 
+  background: var(--color-bg); 
+  color: var(--color-fg); 
+  font-family: var(--font-body); 
+  line-height: 1.5;
+  padding: var(--space-3);
 }
 
-/* Формы: размеры, отступы, визуальный порядок */
-label { display: block; margin: 0.5rem 0 0.25rem; font-weight: bold; }
-input, select, textarea, button:not(#openDialog) {
-    width: 100%;
-    max-width: 480px;
-    padding: .5rem .75rem;
-    border: 1px solid #c8c8c8;
-    border-radius: 8px;
-    background: #fff;
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
+/* ===== Контейнер ===== */
+.container {
+  width: min(100% - 2 * var(--space-4), 1120px);
+  margin-inline: auto;
 }
 
-/* Кнопка по умолчанию */
-button:not(#openDialog), [type="submit"] {
-    background: #0a84ff;
-    color: #fff;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-    max-width: none;
-    width: auto;
+/* ===== Шапка сайта ===== */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-muted);
+  margin-bottom: var(--space-5);
 }
 
-/* Состояния: клавиатура/мышь/ошибки */
-:where(input, select, textarea, button):focus-visible {
-    outline: 2px solid #0a84ff;
-    outline-offset: 2px;
-}
-button:hover { filter: brightness(0.95); }
-:disabled, [aria-disabled="true"] { opacity: .6; cursor: not-allowed; }
-
-/* Подсветка ошибочных полей */
-[aria-invalid="true"] {
-    border-color: #b00020;
-    background-color: #ffe6e6;
+.site-header__brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  text-decoration: none;
 }
 
-/* Стили для модального окна */
+/* ===== Навигация ===== */
+.site-nav__list {
+  display: flex;
+  list-style: none;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav__link {
+  color: var(--color-fg);
+  text-decoration: none;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius);
+  transition: background-color 0.2s;
+}
+
+.site-nav__link:hover,
+.site-nav__link:focus-visible {
+  background-color: var(--color-primary);
+  color: white;
+  outline: none;
+}
+
+.site-nav__link--active {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* ===== Секции ===== */
+.section {
+  padding: var(--space-5) 0;
+}
+
+.section__title {
+  margin: 0 0 var(--space-4) 0;
+  color: var(--color-primary);
+}
+
+/* ===== Хлебные крошки ===== */
+.breadcrumbs {
+  margin-bottom: var(--space-4);
+}
+
+.breadcrumbs__list {
+  display: flex;
+  list-style: none;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumbs__link {
+  color: var(--color-muted);
+  text-decoration: none;
+}
+
+.breadcrumbs__link:hover {
+  color: var(--color-primary);
+}
+
+.breadcrumbs__current {
+  color: var(--color-fg);
+}
+
+/* ===== Форма ===== */
+.form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form__group {
+  margin-bottom: var(--space-4);
+}
+
+.form__label {
+  display: block;
+  margin-bottom: var(--space-1);
+  font-weight: bold;
+}
+
+.form__input,
+.form__select,
+.form__textarea {
+  width: 100%;
+  padding: var(--space-3);
+  border: 1px solid var(--color-muted);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.form__input:focus,
+.form__select:focus,
+.form__textarea:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.form__input[aria-invalid="true"],
+.form__select[aria-invalid="true"],
+.form__textarea[aria-invalid="true"] {
+  border-color: var(--color-danger);
+}
+
+.form__help {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  margin-top: var(--space-1);
+}
+
+.form__actions {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+/* ===== Кнопки ===== */
+.btn {
+  padding: var(--space-3) var(--space-4);
+  border: none;
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn--primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.btn--primary:hover {
+  background-color: #0066cc;
+}
+
+.btn--secondary {
+  background-color: var(--color-muted);
+  color: white;
+}
+
+.btn--secondary:hover {
+  background-color: #555;
+}
+
+/* ===== Модальное окно ===== */
 dialog {
-    padding: 1.25rem;
-    border: none !important;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    width: 90%;
-    max-width: 600px;
+  padding: var(--space-4);
+  border: none !important;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 90%;
+  max-width: 600px;
 }
+
 dialog::backdrop {
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(2px);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
 }
-.form-actions {
-    display: flex;
-    gap: .5rem;
-    margin-top: 1rem;
-    justify-content: flex-end;
-}
-small {
-    display: block;
-    font-size: 0.875rem;
-    color: #666;
-    margin-top: -0.25rem;
-    margin-bottom: 0.5rem;
+
+/* ===== Утилиты ===== */
+.text-center { text-align: center; }
+.mb-1 { margin-bottom: var(--space-1); }
+.mb-2 { margin-bottom: var(--space-2); }
+.mb-3 { margin-bottom: var(--space-3); }
+.mb-4 { margin-bottom: var(--space-4); }
+.mb-5 { margin-bottom: var(--space-5); }
+
+/* ===== Плавная прокрутка ===== */
+html { scroll-behavior: smooth; }
+
+/* ===== Подсветка якоря ===== */
+:target {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: 4px;
+  border-radius: var(--radius);
 }
