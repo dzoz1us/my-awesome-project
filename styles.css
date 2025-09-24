@@ -236,3 +236,29 @@ html { scroll-behavior: smooth; }
   outline-offset: 4px;
   border-radius: var(--radius);
 }
+
+/* Стили для невалидных полей */
+.form__input:invalid,
+.form__select:invalid,
+.form__textarea:invalid {
+    border-color: var(--color-danger);
+    background-color: #ffe6e6;
+}
+
+.form__input:invalid:focus,
+.form__select:invalid:focus,
+.form__textarea:invalid:focus {
+    outline-color: var(--color-danger);
+}
+
+/* Сообщение об ошибке */
+.form__error {
+    color: var(--color-danger);
+    font-size: 0.875rem;
+    margin-top: var(--space-1);
+    display: none;
+}
+
+.form__input:invalid ~ .form__error {
+    display: block;
+}
